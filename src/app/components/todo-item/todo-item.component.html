@@ -1,5 +1,5 @@
 <li
-  *ngFor="let todo of todos"
+  *ngFor="let todo of todos; index as todoIndex"
   [class.completed]="todo.isCompleted"
   class="todo-item"
   [id]="todo.id"
@@ -9,15 +9,29 @@
     [checked]="todo.isCompleted"
     (click)="toggleTodo(todo.id)"
   />
-  <span *ngIf="editModeOff" class="todo-text">{{ todo.text }}</span>
-  <div *ngIf="!editModeOff">
-    <input type="text" [(ngModel)]="editTextValue" name="editTextValue" />
-    <app-button text="Save" (btnClick)="editTodo(todo.id)"></app-button>
+
+  <div *ngIf="editModeOn === todoIndex; else elseBlock">
+    <input
+      type="text"
+      class="todo-text"
+      [(ngModel)]="editTextValue"
+      name="editTextValue"
+    />
+    <app-button
+      text="Save"
+      (btnClick)="editTodo(todo.id)"
+      [isDisabled]="todo.isCompleted"
+    ></app-button>
   </div>
-  <app-button
-    *ngIf="editModeOff"
-    text="Edit"
-    (btnClick)="toggleEditModeOn(todo.text)"
-  ></app-button>
+  <ng-template #elseBlock>
+    <span class="todo-text">{{ todo.text }}</span>
+
+    <app-button
+      text="Edit"
+      (btnClick)="toggleEditModeOn(todo, todoIndex)"
+      [isDisabled]="todo.isCompleted"
+    ></app-button
+  ></ng-template>
+
   <app-button text="Delete" (btnClick)="deleteTodo(todo.id)"></app-button>
 </li>

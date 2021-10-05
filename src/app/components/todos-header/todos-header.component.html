@@ -1,12 +1,16 @@
+<h1 style="text-align: center">Todos Tracker</h1>
 <header class="todos__header">
-  <h1>Todos Tracker</h1>
-
   <!-- new todo input -->
+  <input
+    type="checkbox"
+    [class.toggleAllOn]="toggleAllCompleted === true"
+    (click)="onClick($event)"
+    [disabled]="isDisabled || todos.length === 0"
+  />
   <form class="new-todo-input__wrapper" (ngSubmit)="onSubmit()">
-    <input type="checkbox" />
-    <label for="new-todo-input"></label>
+    <label for="todo-input"></label>
     <input
-      class="new-todo__input"
+      class="todo-input"
       type="text"
       id="new-todo-input"
       placeholder="What needs to be done?"

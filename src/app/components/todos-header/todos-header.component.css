@@ -1,3 +1,11 @@
 .todos__header {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0;
+}
+
+.todo-input {
+  width: 300px;
 }

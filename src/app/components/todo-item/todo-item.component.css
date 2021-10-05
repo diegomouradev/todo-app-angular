@@ -1,17 +1,29 @@
 .todo-item {
   display: flex;
-  border: 1px solid black;
-  margin: 5px;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
 }
 
-.completed {
-  border: 1px solid red;
+li span {
+  border-bottom: 1px solid black;
 }
 
 li.completed > span {
+  color: grey;
   text-decoration: line-through;
 }
 
 .todo-text {
-  font-size: 20px;
+  width: 250px;
+  font-size: 16px;
+  margin: 0 5px;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: flex;
 }

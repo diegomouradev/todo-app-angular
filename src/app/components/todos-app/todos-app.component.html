@@ -1,6 +1,10 @@
 <main class="main">
   <!-- Todos Header -->
-  <app-todos-header (onAddTodo)="addNewTodo($event)"></app-todos-header>
+  <app-todos-header
+    (onAddTodo)="addNewTodo($event)"
+    (onToggleAllTodos)="toggleAllTodos($event)"
+    [todos]="todos"
+  ></app-todos-header>
 
   <ul class="todos__list">
     <app-todo-item
@@ -10,4 +14,5 @@
       [todos]="todos"
     ></app-todo-item>
   </ul>
+  <app-footer [todos]="todos"></app-footer>
 </main>

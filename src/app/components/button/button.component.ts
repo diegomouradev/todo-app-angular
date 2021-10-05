@@ -9,7 +9,8 @@ import { EventEmitter } from '@angular/core';
 })
 export class ButtonComponent implements OnInit {
   @Input() text: string = '';
-  @Input() id: string = '';
+  @Input() isDisabled: boolean;
+
   @Output() btnClick: EventEmitter<string> = new EventEmitter();
 
   constructor() {}

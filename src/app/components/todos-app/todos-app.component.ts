@@ -60,4 +60,18 @@ export class TodosAppComponent implements OnInit {
     this.todos = updatedTodos;
     this.storageService.setTodos(this.namespace, this.todos);
   }
+
+  toggleAllTodos($event): void {
+    let updatedTodos: iTodos[] = this.todos.map((todo) => {
+      if ($event.currentTarget.checked === true) {
+        todo.isCompleted = true;
+      } else {
+        todo.isCompleted = false;
+      }
+
+      return todo;
+    });
+    this.todos = updatedTodos;
+    this.storageService.setTodos(this.namespace, this.todos);
+  }
 }

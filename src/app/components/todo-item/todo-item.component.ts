@@ -12,7 +12,8 @@ export class TodoItemComponent implements OnInit {
   @Output() onToggleTodo: EventEmitter<string> = new EventEmitter();
   @Output() onDeleteTodo: EventEmitter<string> = new EventEmitter();
   @Output() onEditTodo: EventEmitter<{}> = new EventEmitter();
-  editModeOff: boolean = true;
+  @Output() isDisabled: boolean = false;
+  editModeOn: number = null;
   editTextValue: string;
   constructor() {}
 
@@ -20,20 +21,20 @@ export class TodoItemComponent implements OnInit {
 
   toggleTodo(id: string) {
     this.onToggleTodo.emit(id);
+    this.isDisabled = !this.isDisabled;
   }
 
   deleteTodo(id: string): void {
     this.onDeleteTodo.emit(id);
-    this.editModeOff = true;
   }
 
-  toggleEditModeOn(text: string): void {
-    this.editModeOff = false;
-    this.editTextValue = text;
+  toggleEditModeOn(todo: iTodos, todoIndex): void {
+    this.editModeOn = todoIndex;
+    this.editTextValue = todo.text;
   }
 
   editTodo(id: string): void {
-    this.editModeOff = true;
+    this.editModeOn = null;
     const editData = {
       id: id,
       text: this.editTextValue,
