@@ -1,0 +1,18 @@
+<header class="todos__header">
+  <h1>Todos Tracker</h1>
+
+  <!-- new todo input -->
+  <form class="new-todo-input__wrapper" (ngSubmit)="onSubmit()">
+    <input type="checkbox" />
+    <label for="new-todo-input"></label>
+    <input
+      class="new-todo__input"
+      type="text"
+      id="new-todo-input"
+      placeholder="What needs to be done?"
+      [(ngModel)]="text"
+      name="text"
+    />
+    <input type="submit" class="new-todo__btn" value="Add" />
+  </form>
+</header>

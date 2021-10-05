@@ -1,0 +1,17 @@
+.todo-item {
+  display: flex;
+  border: 1px solid black;
+  margin: 5px;
+}
+
+.completed {
+  border: 1px solid red;
+}
+
+li.completed > span {
+  text-decoration: line-through;
+}
+
+.todo-text {
+  font-size: 20px;
+}

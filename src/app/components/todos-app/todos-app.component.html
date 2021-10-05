@@ -1,0 +1,13 @@
+<main class="main">
+  <!-- Todos Header -->
+  <app-todos-header (onAddTodo)="addNewTodo($event)"></app-todos-header>
+
+  <ul class="todos__list">
+    <app-todo-item
+      (onToggleTodo)="toggleTodo($event)"
+      (onDeleteTodo)="deleteTodo($event)"
+      (onEditTodo)="editTodo($event)"
+      [todos]="todos"
+    ></app-todo-item>
+  </ul>
+</main>
